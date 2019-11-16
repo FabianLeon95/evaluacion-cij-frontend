@@ -1,0 +1,34 @@
+<div class="card shadow">
+  <div class="card-header">
+    <span class="card-title h3 mb-0">Nueva pregunta</span>
+  </div>
+  <form [formGroup]="form">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="statement">Pregunta</label>
+        <input formControlName="statement" type="text" class="form-control"
+               [class.is-invalid]="!form.controls.statement.valid && form.controls.statement.touched" id="statement">
+        <div *ngIf="form.controls.statement.hasError('required')" class="invalid-feedback">
+          Campo requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="type">Tipo</label>
+        <select formControlName="type" class="form-control"
+                [class.is-invalid]="!form.controls.type.valid && form.controls.type.touched" id="type">
+          <option value="yesNo">Si/No</option>
+          <option value="stars">Estrellas</option>
+          <option value="text">Texto</option>
+        </select>
+        <div *ngIf="form.controls.type.hasError('required')" class="invalid-feedback">
+          Campo requerido.
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary text-white"
+              [disabled]="form.invalid" (click)="store()">Guardar
+      </button>
+    </div>
+  </form>
+</div>

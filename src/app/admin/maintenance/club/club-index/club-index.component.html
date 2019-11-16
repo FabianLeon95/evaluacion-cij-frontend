@@ -1,0 +1,37 @@
+<div class="card shadow">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span class="card-title h3 mb-0">Clubes</span>
+    <a href class="btn btn-sm btn-primary text-white" routerLink="create">Nuevo club</a>
+  </div>
+  <div class="card-body">
+    <div *ngIf="!loading">
+      <table class="table table-responsive-sm table-striped">
+        <thead class="text-primary">
+        <tr>
+          <th scope="col" class="border-top-0">Club</th>
+          <th scope="col" class="border-top-0 text-center">Imagen</th>
+          <th scope="col" class="border-top-0 text-center">Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let club of clubs">
+          <td>{{club.name}}</td>
+          <td class="text-center">
+            <img class="bg-primary rounded p-2" style="max-width: 100px" [src]="apiUrl+club.imgPath" [alt]="club.name">
+          </td>
+          <td class="text-center">
+            <a [routerLink]="[club.id, 'edit']" class="btn btn-primary btn-sm text-white m-1" title="Editar">
+              <i class="fas fa-edit" style="width: 15px"></i>
+            </a>
+            <button class="btn btn-primary btn-sm text-white m-1" title="Borrar" (click)="delete(club.id)">
+              <i class="fas fa-trash" style="width: 15px"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
