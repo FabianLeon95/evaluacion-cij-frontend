@@ -1,0 +1,54 @@
+<div class="card shadow">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span class="card-title h3 mb-0">Respuestas <span class="text-muted" style="font-size: 1rem" *ngIf="dateRange">{{ dateRange.startDate }} / {{dateRange.endDate}}</span></span>
+    <button class="btn btn-sm btn-primary text-white" data-toggle="modal" data-target="#dateRange">Periodo</button>
+  </div>
+  <div class="card-body">
+    <app-loading *ngIf="loading"></app-loading>
+    <div class="row" *ngIf="!loading">
+        <div class="col-6 col-md-4 col-lg-3 mb-4" *ngFor="let club of clubs">
+          <div class="card card-border h-100 shadow">
+            <div class="card-body text-center d-flex justify-content-center align-items-center">
+              <a class="card-link h5 mb-0" [routerLink]="['club', club.id]">{{club.name}}</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="dateRange" tabindex="-1" role="dialog" aria-labelledby="dateRangeLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dateRangeLabel">Periodo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form">
+          <div class="form-group">
+            <label for="startDate">Inicio</label>
+            <input formControlName="startDate" id="startDate" type="date" max="3000-12-31"
+                   min="1000-01-01" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="endDate">Fin</label>
+            <input formControlName="endDate" id="endDate" type="date" min="1000-01-01"
+                   max="3000-12-31" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="resetForm()" data-dismiss="modal">Reiniciar</button>
+        <button type="button" class="btn btn-primary text-light" (click)="setDateRange()" [class.disabled]="!form.valid" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

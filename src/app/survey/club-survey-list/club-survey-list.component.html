@@ -1,0 +1,24 @@
+<header class="mb-5">
+  <div class="bg-white p-3 rounded shadow">
+      <h4 class="text-primary text-center mb-0">Elejí tu club y danos tu opinión</h4>
+  </div>
+</header>
+<div *ngIf="!loading" class="row">
+  <div *ngFor="let club of clubs" class="col-6 col-sm-4 col-md-3 mb-5">
+  <app-club-survey-card [club]="club"></app-club-survey-card>
+  </div>
+</div>
+
+<div *ngIf="loading" class="row">
+  <div *ngFor="let card of cardPlaceholder" class="col-6 col-sm-4 col-md-3 mb-5">
+    <div class="card py-4">
+      <div class="card-body" style="min-height: 10rem">
+        <div class="d-flex justify-content-center my-5">
+          <div class="spinner-grow text-primary"  style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Cargando...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

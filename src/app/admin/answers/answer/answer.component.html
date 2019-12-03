@@ -1,0 +1,7 @@
+<app-answer-chart *ngIf="(question.type === 'yesNo' || question.type === 'stars') && !loading"
+                  [answers]="answers" [type]="question.type">
+</app-answer-chart>
+
+<app-answer-text *ngIf="question.type === 'text' && !loading"
+                 [answers]="answers" [question]="question">
+</app-answer-text>

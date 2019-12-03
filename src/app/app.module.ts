@@ -4,9 +4,10 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {AdminModule} from './admin/admin.module';
+import {SurveyModule} from './survey/survey.module';
+import {JwtModule} from '@auth0/angular-jwt';
 
 import {AppComponent} from './app.component';
-import {JwtModule} from '@auth0/angular-jwt';
 import {environment} from '../environments/environment';
 
 @NgModule({
@@ -18,6 +19,7 @@ import {environment} from '../environments/environment';
     AppRoutingModule,
     HttpClientModule,
     AdminModule,
+    SurveyModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('token'),
@@ -27,6 +29,7 @@ import {environment} from '../environments/environment';
     })
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

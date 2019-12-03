@@ -1,0 +1,67 @@
+input.bool {
+  display: none;
+}
+
+label.bool {
+  padding: 10px 1.5rem;
+  font-size: 38px;
+  color: #888;
+  transition: transform .2s;
+  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+input.yes:checked ~ label.yes {
+  color: #212529;
+
+  &:before {
+    content: '\f00c';
+    font-family: "Font Awesome 5 Free", sans-serif;
+    font-weight: 900;
+    color: #28a745;
+    transition: transform .25s;
+  }
+}
+
+input.no:checked ~ label.no {
+  color: #212529;
+
+  &:before {
+    content: '\f00d';
+    font-family: "Font Awesome 5 Free", sans-serif;
+    font-weight: 900;
+    color: #dc3545;
+    transition: transform .25s;
+  }
+}
+
+label.bool:before {
+  margin-right: 0.65rem;
+}
+
+label.yes:before {
+  content: '\f00c';
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free", sans-serif;
+}
+
+label.no:before {
+  content: '\f00d';
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free", sans-serif;
+}
+
+input.bool:checked ~ .rev-box {
+  height: 125px;
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  label.bool {
+    font-size: 48px;
+    padding: 10px 3rem;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+}

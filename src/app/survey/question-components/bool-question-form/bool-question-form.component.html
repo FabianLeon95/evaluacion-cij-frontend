@@ -1,0 +1,24 @@
+<div class="card shadow">
+  <div class="card-header bg-primary text-center position-relative">
+    <span class="text-alt text-white">{{  question.statement }}</span>
+    <button class="btn bg-white btn-circle btn-xl btn-speak text-primary shadow"
+            style="border: 2px solid white"><i class="fas fa-volume-up"></i></button>
+  </div>
+  <div class="card-body text-center py-5">
+    <div class="mb-4">
+      <form [formGroup]="form">
+        <input formControlName="selection" class="bool yes" id="yes" type="radio" value="1"/>
+        <label class="bool yes" for="yes">Si</label>
+        <input formControlName="selection" class="bool no" id="no" type="radio" value="0"/>
+        <label class="bool no" for="no">No</label>
+      </form>
+    </div>
+    <div>
+      <button class="btn btn-lg btn-primary btn-next text-alt text-white shadow" [class.disabled]="form.invalid"
+              (click)="sendAnswer()">
+        Siguiente
+        <i class="fas fa-chevron-right ml-2"></i>
+      </button>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,14 @@ export class QuestionService {
       );
   }
 
+  getByType(type: string): Observable<Question[]> {
+    return this.http.get(`${environment.apiUrl}/api/questions?type=${type}`)
+      .pipe(
+        handleHttpError,
+        mapQuestions
+      );
+  }
+
   get(id: number): Observable<Question> {
     return this.http.get(`${environment.apiUrl}/api/questions/${id}`)
       .pipe(

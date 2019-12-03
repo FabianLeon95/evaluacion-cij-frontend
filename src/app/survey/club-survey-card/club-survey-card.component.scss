@@ -1,0 +1,16 @@
+.btn-special {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(25%, -25%);
+}
+
+.card {
+  border: none;
+  border-radius: 8px;
+
+  .card-body {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}

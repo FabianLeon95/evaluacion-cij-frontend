@@ -1,0 +1,50 @@
+.background-wrap {
+  background-color: #84DFF4!important;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+  padding-top: 9rem;
+}
+
+@keyframes animatedCloud1 {
+  0%{margin-left: -250px;}
+  100%{margin-left: 100%}
+}
+
+@keyframes animatedCloud2 {
+  0%{margin-left: -500px;}
+  100%{margin-left: 100%}
+}
+
+@keyframes animatedCloud3 {
+  0%{margin-left: -750px;}
+  100%{margin-left: 100%}
+}
+
+@keyframes animatedCloud4 {
+  0%{margin-left: -1000px;}
+  100%{margin-left: 100%}
+}
+
+.cloud { margin-bottom: 10vh}
+
+.cloud-1{
+  animation: animatedCloud4 35s linear infinite;
+  transform: scale(0.8);
+}
+.cloud-2{
+  animation: animatedCloud1 25s linear infinite;
+  transform: scale(1);
+}
+.cloud-3{
+  animation: animatedCloud3 40s linear infinite;
+  transform: scale(0.7);
+}
+.cloud-4{
+  animation: animatedCloud2 30s linear infinite;
+  transform: scale(0.9);
+}

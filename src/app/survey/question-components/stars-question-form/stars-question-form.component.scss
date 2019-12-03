@@ -1,0 +1,46 @@
+input.star {
+  display: none;
+}
+
+label.star {
+  float: right;
+  padding: 10px 1rem;
+  font-size: 38px;
+  color: #888;
+  transition: all .2s;
+  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+@media (min-width: 768px) {
+  label.star {
+    font-size: 48px;
+    &:hover {
+      transform: rotate(-15deg) scale(1.2);
+    }
+  }
+}
+
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  color: #FD4;
+  transition: all .25s;
+}
+
+
+//input.star-4:checked ~ label.star:before {
+//  color: #FE7;
+//  //text-shadow: 0 0 20px #FE7;
+//}
+
+input.star-1:checked ~ label.star:before {
+  color: #F62;
+}
+
+label.star:before {
+  content: '\f005';
+  font-family: "Font Awesome 5 Free", sans-serif;
+}
+
+

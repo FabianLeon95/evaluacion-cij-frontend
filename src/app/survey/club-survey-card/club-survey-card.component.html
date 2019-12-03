@@ -1,0 +1,11 @@
+<div class="card h-100 bg-primary shadow">
+  <a [routerLink]="[club.id]">
+    <img [src]="apiUrl+club.imgPath" class="card-img-top p-3" [alt]="club.name">
+  </a>
+  <div class="card-body bg-white text-center d-flex align-items-center justify-content-center">
+    <a [routerLink]="[club.id]" class="card-title text-primary text-alt h5 mb-0">{{club.name}}</a>
+  </div>
+  <button class="btn btn-lg btn-circle btn-light btn-special text-primary shadow"> <!--TODO:speak-->
+    <i class="fas fa-volume-up"></i>
+  </button>
+</div>

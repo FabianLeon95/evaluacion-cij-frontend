@@ -1,0 +1,28 @@
+<div class="card shadow">
+  <div class="card-header bg-primary text-center position-relative">
+    <span class="text-alt text-white mb-0">{{  question.statement }}</span>
+    <button class="btn bg-white btn-circle btn-xl btn-speak text-primary shadow"
+            style="border: 2px solid white"><i class="fas fa-volume-up"></i></button>
+  </div>
+  <div class="card-body text-center py-5">
+    <div class="d-inline-block mb-4">
+      <form [formGroup]="form">
+        <input class="star star-4" id="star-4" type="radio" value="4" formControlName="stars"/>
+        <label class="star star-4 mb-0" for="star-4"></label>
+        <input class="star star-3" id="star-3" type="radio" value="3" formControlName="stars"/>
+        <label class="star star-3 mb-0" for="star-3"></label>
+        <input class="star star-2" id="star-2" type="radio" value="2" formControlName="stars"/>
+        <label class="star star-2 mb-0" for="star-2"></label>
+        <input class="star star-1" id="star-1" type="radio" value="1" formControlName="stars"/>
+        <label class="star star-1 mb-0" for="star-1"></label>
+      </form>
+    </div>
+    <div>
+      <button class="btn btn-lg btn-primary btn-next text-alt text-white shadow" [class.disabled]="form.invalid"
+              (click)="sendAnswer()">
+        Siguiente
+        <i class="fas fa-chevron-right ml-2"></i>
+      </button>
+    </div>
+  </div>
+</div>

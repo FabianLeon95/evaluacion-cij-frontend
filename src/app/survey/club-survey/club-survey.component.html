@@ -1,0 +1,56 @@
+<div *ngIf="!loading && !started" class="card shadow animated bounceIn fast">
+  <div class="card-header bg-primary text-center position-relative">
+    <div class="d-flex flex-wrap align-items-center justify-content-center">
+      <div class="p-2">
+        <img [src]="apiUrl+club.imgPath" height="120" [alt]="club.name">
+      </div>
+      <div class="p-2">
+        <span class="text-alt text-white text-uppercase mb-0 text-center">{{ club.name }}</span>
+      </div>
+    </div>
+    <button class="btn bg-white btn-circle btn-xl btn-speak text-primary shadow"
+            style="border: 2px solid white"><i class="fas fa-volume-up"></i></button>
+  </div>
+  <div class="card-body text-center py-5">
+    <h5 class="mt-4 mb-5">
+      Queremos conocer tu opinión sobre el curso {{club.name}}, selecciona las opciones que creas más adecuadas.
+    </h5>
+    <div>
+      <button class="btn btn-lg btn-primary btn-next text-alt text-white shadow"
+              [class.disabled]="!(boolQuestions&&starsQuestions&&textQuestions)"
+              (click)="start()">
+        Iniciar
+        <i class="fas fa-chevron-right ml-2"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="started && (currentType=='yesNo')">
+  <div *ngFor="let question of boolQuestions; let i = index">
+    <app-bool-question-form *ngIf="i == current" [clubId]="club.id" [question]="question" (onAction)="next()">
+    </app-bool-question-form>
+  </div>
+</div>
+
+<div *ngIf="started && (currentType=='stars')">
+  <div *ngFor="let question of starsQuestions; let i = index">
+    <app-stars-question-form *ngIf="i == current" [clubId]="club.id" [question]="question" (onAction)="next()">
+    </app-stars-question-form>
+  </div>
+</div>
+
+<div *ngIf="started && (currentType=='text')">
+  <div *ngFor="let question of textQuestions; let i = index">
+    <app-text-question-form *ngIf="i == current" [clubId]="club.id" [question]="question" (onAnswerSend)="next()">
+    </app-text-question-form>
+  </div>
+</div>
+
+<div *ngIf="finished" class="card shadow animated bounceIn fast">
+  <div class="card-body my-4 text-center">
+    <h1 class="text-alt text-primary text-uppercase font-weight-bold">¡Gracias!</h1>
+    <h3>Hemos terminado</h3>
+    <i class="fas fa-smile-wink text-warning mt-4 animated bounceIn fast delay-1s" style="font-size: 10rem"></i>
+  </div>
+</div>

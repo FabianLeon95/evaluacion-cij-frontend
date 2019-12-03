@@ -4,6 +4,7 @@
     <a href class="btn btn-sm btn-primary text-white" routerLink="create">Nuevo club</a>
   </div>
   <div class="card-body">
+    <app-loading *ngIf="loading"></app-loading>
     <div *ngIf="!loading">
       <table class="table table-responsive-sm table-striped">
         <thead class="text-primary">

@@ -4,8 +4,9 @@
     <a href class="btn btn-sm btn-primary text-white" routerLink="create">Nueva pregunta</a>
   </div>
   <div class="card-body">
+    <app-loading *ngIf="loading"></app-loading>
     <div *ngIf="!loading">
-      <table class="table table-responsive table-striped">
+      <table class="table table-responsive-sm table-striped">
         <thead class="text-primary">
         <tr>
           <th scope="col" class="border-top-0">Pregunta</th>

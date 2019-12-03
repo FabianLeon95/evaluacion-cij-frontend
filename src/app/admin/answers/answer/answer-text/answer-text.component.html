@@ -1,0 +1,62 @@
+<ul class="list-group">
+  <li class="list-group-item">
+    <button type="button" class="btn btn-link" data-toggle="modal" [attr.data-target]="'#textAnswers'+question.id">
+      <span class="badge badge-primary text-light mr-2">{{ textAnswers.length }}</span> Respuestas
+    </button>
+  </li>
+  <li class="list-group-item">
+    <button type="button" class="btn btn-link" data-toggle="modal" [attr.data-target]="'#audioAnswers'+question.id">
+      <span class="badge badge-primary text-light mr-2">{{ audioAnswers.length }}</span> Audios
+    </button>
+  </li>
+</ul>
+<!-- Modal -->
+<div class="modal fade" [id]="'textAnswers'+question.id" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary">
+          Respuestas para <span class="font-italic">{{question.statement}}</span>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul *ngIf="textAnswers.length" class="list-group">
+          <li *ngFor="let answer of textAnswers" class="list-group-item">{{answer}}</li>
+        </ul>
+        <div *ngIf="!textAnswers.length" class="text-center">
+          <h4 class="text-muted">No hay Audios en esta pregunta</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" [id]="'audioAnswers'+question.id" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary">
+          Audios para <span class="font-italic">{{question.statement}}</span>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul *ngIf="audioAnswers.length" class="list-group">
+          <li *ngFor="let answer of audioAnswers" class="list-group-item">
+            <audio class="w-100" controls>
+              <source [src]="apiUrl+answer" type="audio/webm">
+            </audio>
+          </li>
+        </ul>
+        <div *ngIf="!audioAnswers.length" class="text-center">
+          <h4 class="text-muted">No hay Audios en esta pregunta</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

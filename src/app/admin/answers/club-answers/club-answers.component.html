@@ -1,0 +1,26 @@
+<app-loading *ngIf="loadingClub"></app-loading>
+<div class="card shadow" *ngIf="!loadingClub">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span class="card-title h3 mb-0">{{club.name}}</span>
+    <button class="btn btn-primary text-white" [class.disabled]="loadingExcel" title="Exportar a Excel" (click)="saveAsExcel()">
+      <span *ngIf="!loadingExcel"><i class="fas fa-file-excel mr-2"></i>Exportar</span>
+      <span *ngIf="loadingExcel"><span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Exportando</span>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="row" *ngIf="!loadingQuestions">
+      <div class="col-12 col-md-6 mb-4" *ngFor="let question of questions">
+        <div class="card card-border h-100 shadow">
+          <div class="card-header">
+            <span class="card-title text-primary">{{question.statement}}</span>
+          </div>
+          <div class="card-body">
+            <app-answer [club]="club" [question]="question"></app-answer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
