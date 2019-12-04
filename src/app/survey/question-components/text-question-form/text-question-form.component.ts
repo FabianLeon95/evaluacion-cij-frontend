@@ -1,16 +1,17 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AudioRecorderService} from '../../../services/audio-recorder.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {AnswerService} from '../../../services/answer.service';
 import {Question} from '../../../models/question.model';
+import {SpeechService} from '../../../services/speech.service';
 
 @Component({
   selector: 'app-text-question-form',
   templateUrl: './text-question-form.component.html',
   styleUrls: ['../../club-survey/club-survey.component.scss', './text-question-form.component.scss']
 })
-export class TextQuestionFormComponent implements OnInit, OnDestroy {
+export class TextQuestionFormComponent implements OnDestroy {
   form: FormGroup;
   @Input() clubId: number;
   @Input() question: Question;
@@ -20,7 +21,7 @@ export class TextQuestionFormComponent implements OnInit, OnDestroy {
   private blob;
   private blobUrl;
 
-  constructor(private audioRecorder: AudioRecorderService, private sanitizer: DomSanitizer, private answerService: AnswerService) {
+  constructor(private audioRecorder: AudioRecorderService, private sanitizer: DomSanitizer, private answerService: AnswerService, private speechService: SpeechService) {
     this.onAnswerSend = new EventEmitter<boolean>();
     this.form = new FormGroup({
       text: new FormControl('')
@@ -36,9 +37,6 @@ export class TextQuestionFormComponent implements OnInit, OnDestroy {
       this.blob = data.blob;
       this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
     });
-  }
-
-  ngOnInit() {
   }
 
   sendAnswer() {
@@ -83,8 +81,13 @@ export class TextQuestionFormComponent implements OnInit, OnDestroy {
     this.blob = null;
   }
 
+  speak(text: string) {
+    this.speechService.speak(text);
+  }
+
   ngOnDestroy(): void {
     this.abortRecording();
+    this.speechService.stop();
   }
 
 }

@@ -1,11 +1,10 @@
 <div class="card shadow">
   <div class="card-header bg-primary text-center position-relative">
-    <h2 class="card-statement text-alt text-white text-uppercase mb-0">{{ question.statement }}</h2>
+    <h2 class="card-statement text-alt text-white mb-0">{{ question.statement }}</h2>
     <button class="btn bg-white btn-circle btn-xl btn-speak text-primary shadow"
-            style="border: 2px solid white"><i class="fas fa-volume-up"></i></button>
+            style="border: 2px solid white" (click)="speak(question.statement)"><i class="fas fa-volume-up"></i></button>
   </div>
   <div class="card-body text-center py-5">
-
     <form [formGroup]="form" class="mt-3 mb-4">
       <div class="group">
         <input formControlName="text" type="text" placeholder="Tu respuesta">

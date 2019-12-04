@@ -2,7 +2,7 @@
   <div class="card-header bg-primary text-center position-relative">
     <span class="text-alt text-white">{{  question.statement }}</span>
     <button class="btn bg-white btn-circle btn-xl btn-speak text-primary shadow"
-            style="border: 2px solid white"><i class="fas fa-volume-up"></i></button>
+            style="border: 2px solid white" (click)="speak(question.statement)"><i class="fas fa-volume-up"></i></button>
   </div>
   <div class="card-body text-center py-5">
     <div class="mb-4">

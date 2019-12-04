@@ -1,17 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Club} from '../../models/club.model';
 import {ClubService} from '../../services/club.service';
 import {environment} from '../../../environments/environment';
 import {Question} from '../../models/question.model';
 import {QuestionService} from '../../services/question.service';
+import {SpeechService} from '../../services/speech.service';
 
 @Component({
   selector: 'app-club-survey',
   templateUrl: './club-survey.component.html',
   styleUrls: ['./club-survey.component.scss']
 })
-export class ClubSurveyComponent implements OnInit {
+export class ClubSurveyComponent implements OnInit, OnDestroy {
   private club: Club;
   private boolQuestions: Question[];
   private starsQuestions: Question[];
@@ -23,7 +24,8 @@ export class ClubSurveyComponent implements OnInit {
   private current: number;
   private currentType: string;
 
-  constructor(private clubService: ClubService, private questionService: QuestionService, private route: ActivatedRoute) {
+  constructor(private clubService: ClubService, private questionService: QuestionService, private route: ActivatedRoute,
+              private speechService: SpeechService) {
     this.loading = true;
     this.started = false;
     this.apiUrl = environment.apiUrl;
@@ -50,6 +52,7 @@ export class ClubSurveyComponent implements OnInit {
     if (this.boolQuestions.length === 0) {
       this.next();
     }
+    this.speechService.stop();
   }
 
   next() {
@@ -65,6 +68,14 @@ export class ClubSurveyComponent implements OnInit {
     if (this.currentType === 'text' && this.current >= this.textQuestions.length) {
       this.finished = true;
     }
+  }
+
+  speak(text: string) {
+    this.speechService.speak(text);
+  }
+
+  ngOnDestroy() {
+    this.speechService.stop();
   }
 
 }
