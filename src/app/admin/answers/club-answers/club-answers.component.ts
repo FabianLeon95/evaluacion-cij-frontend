@@ -14,14 +14,17 @@ import {AnswerService} from '../../../services/answer.service';
 })
 export class ClubAnswersComponent implements OnInit {
   private club: Club;
+  private clubStatistics: any;
   private questions: Question[];
   private loadingClub: boolean;
+  private loadingStatistics: boolean;
   private loadingQuestions: boolean;
   private loadingExcel: boolean;
 
   constructor(private route: ActivatedRoute, private clubService: ClubService, private questionService: QuestionService,
               private answerService: AnswerService, private excelService: ExcelService) {
     this.loadingClub = true;
+    this.loadingStatistics = true;
     this.loadingQuestions = true;
   }
 
@@ -30,6 +33,11 @@ export class ClubAnswersComponent implements OnInit {
       this.clubService.get(params.id).subscribe(resp => {
         this.club = resp;
         this.loadingClub = false;
+        this.answerService.getClubAverage(this.club.id).subscribe(data => {
+          this.clubStatistics = data;
+          console.log(data);
+          this.loadingStatistics = false;
+        });
       });
     });
     this.questionService.all().subscribe(resp => {
