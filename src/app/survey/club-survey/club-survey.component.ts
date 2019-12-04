@@ -13,16 +13,16 @@ import {SpeechService} from '../../services/speech.service';
   styleUrls: ['./club-survey.component.scss']
 })
 export class ClubSurveyComponent implements OnInit, OnDestroy {
-  private club: Club;
-  private boolQuestions: Question[];
-  private starsQuestions: Question[];
-  private textQuestions: Question[];
-  private apiUrl: string;
-  private loading: boolean;
-  private started: boolean;
-  private finished: boolean;
-  private current: number;
-  private currentType: string;
+  club: Club;
+  boolQuestions: Question[];
+  starsQuestions: Question[];
+  textQuestions: Question[];
+  apiUrl: string;
+  loading: boolean;
+  started: boolean;
+  finished: boolean;
+  current: number;
+  currentType: string;
 
   constructor(private clubService: ClubService, private questionService: QuestionService, private route: ActivatedRoute,
               private speechService: SpeechService) {

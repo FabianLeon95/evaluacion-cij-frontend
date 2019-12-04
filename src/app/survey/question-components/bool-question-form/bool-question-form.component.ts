@@ -13,7 +13,7 @@ export class BoolQuestionFormComponent implements OnDestroy {
   @Output() onAction: EventEmitter<boolean>;
   @Input() clubId: number;
   @Input() question: Question;
-  private form: FormGroup;
+  form: FormGroup;
 
   constructor(private answerService: AnswerService, private speechService: SpeechService) {
     this.onAction = new EventEmitter<boolean>();

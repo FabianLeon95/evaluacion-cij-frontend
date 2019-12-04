@@ -10,7 +10,7 @@ import {SpeechService} from '../../services/speech.service';
 })
 export class ClubSurveyCardComponent implements OnDestroy {
   @Input() club: Club;
-  private apiUrl: string;
+  apiUrl: string;
 
   constructor(private speechService: SpeechService) {
     this.apiUrl = environment.apiUrl;

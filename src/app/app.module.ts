@@ -22,7 +22,7 @@ import {environment} from '../environments/environment';
     SurveyModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => localStorage.getItem('token'),
+        tokenGetter: jwtGetter,
         whitelistedDomains: [environment.apiDomain],
         blacklistedRoutes: []
       }
@@ -32,5 +32,8 @@ import {environment} from '../environments/environment';
   exports: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }
+
+export function jwtGetter(): string { return localStorage.getItem('token'); }

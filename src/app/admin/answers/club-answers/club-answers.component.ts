@@ -13,13 +13,13 @@ import {AnswerService} from '../../../services/answer.service';
   styles: []
 })
 export class ClubAnswersComponent implements OnInit {
-  private club: Club;
-  private clubStatistics: any;
-  private questions: Question[];
-  private loadingClub: boolean;
-  private loadingStatistics: boolean;
-  private loadingQuestions: boolean;
-  private loadingExcel: boolean;
+  club: Club;
+  clubStatistics: any;
+  questions: Question[];
+  loadingClub: boolean;
+  loadingStatistics: boolean;
+  loadingQuestions: boolean;
+  loadingExcel: boolean;
 
   constructor(private route: ActivatedRoute, private clubService: ClubService, private questionService: QuestionService,
               private answerService: AnswerService, private excelService: ExcelService) {

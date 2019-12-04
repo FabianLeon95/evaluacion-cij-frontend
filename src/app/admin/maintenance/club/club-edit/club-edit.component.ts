@@ -13,11 +13,11 @@ import Swal from 'sweetalert2';
   styles: []
 })
 export class ClubEditComponent implements OnInit {
-  private club: Club;
-  private form: FormGroup;
-  private previewImgUri: string;
+  club: Club;
+  form: FormGroup;
+  previewImgUri: string;
   @ViewChild('fileLabel', {static: false})
-  private fileLabel: ElementRef;
+  fileLabel: ElementRef;
 
   constructor(private clubService: ClubService, private route: ActivatedRoute) {
     this.form = new FormGroup({

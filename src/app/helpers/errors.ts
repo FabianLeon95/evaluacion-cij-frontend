@@ -32,7 +32,7 @@ export const handleExpiredToken = () => {
 
 export const handleInvalidFileType = () => {
   Swal.fire({
-    type: 'error',
+    icon: 'error',
     title: 'Archivo no soportado',
     text: 'Ingrese una imagen, preferiblemente en formato png.',
   });

@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styles: []
 })
 export class QuestionCreateComponent {
-  private form: FormGroup;
+  form: FormGroup;
 
   constructor(private questionService: QuestionService, private router: Router) {
     this.form = new FormGroup({

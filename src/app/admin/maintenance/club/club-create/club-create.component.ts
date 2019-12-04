@@ -10,11 +10,11 @@ import Swal from 'sweetalert2';
   styles: []
 })
 export class ClubCreateComponent {
-  private form: FormGroup;
-  private previewImgUri: string;
-  private noImageUri = '/assets/images/no-image.png';
+  form: FormGroup;
+  previewImgUri: string;
+  noImageUri = '/assets/images/no-image.png';
   @ViewChild('fileLabel', {static: false})
-  private fileLabel: ElementRef;
+  fileLabel: ElementRef;
 
   constructor(private clubService: ClubService) {
     this.form = new FormGroup({

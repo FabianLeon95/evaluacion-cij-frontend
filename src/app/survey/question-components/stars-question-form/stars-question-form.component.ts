@@ -14,7 +14,7 @@ export class StarsQuestionFormComponent implements OnDestroy {
   @Input() clubId: number;
   @Input() question: Question;
   @Output() onAction: EventEmitter<boolean>;
-  private form: FormGroup;
+  form: FormGroup;
 
   constructor(private answerService: AnswerService, private speechService: SpeechService) {
     this.onAction = new EventEmitter<boolean>();

@@ -10,12 +10,12 @@ import {Label} from 'ng2-charts';
 export class AnswerChartComponent implements OnInit {
   @Input() answers: any[];
   @Input() type: string;
-  private data: any[];
-  private labels: Label[];
-  private chartType: ChartType;
-  private options: ChartOptions;
-  private legend: boolean;
-  private loading: boolean;
+  data: any[];
+  labels: Label[];
+  chartType: ChartType;
+  options: ChartOptions;
+  legend: boolean;
+  loading: boolean;
 
   constructor() {
     this.loading = true;

@@ -9,8 +9,8 @@ import {Club} from '../../models/club.model';
 })
 export class ClubSurveyListComponent implements OnInit {
   cardPlaceholder: any;
-  private clubs: Club[];
-  private loading: boolean;
+  clubs: Club[];
+  loading: boolean;
 
   constructor(private clubService: ClubService) {
     this.loading = true;

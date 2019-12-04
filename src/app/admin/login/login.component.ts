@@ -11,8 +11,8 @@ import {throwError} from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnDestroy {
-  private loading: boolean;
-  private form: FormGroup;
+  loading: boolean;
+  form: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {
     this.loading = false;

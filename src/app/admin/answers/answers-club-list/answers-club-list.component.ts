@@ -9,10 +9,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./answers-club-list.component.scss']
 })
 export class AnswersClubListComponent implements OnInit {
-  private clubs: Club[];
-  private form: FormGroup;
-  private loading: boolean;
-  private dateRange: any;
+  clubs: Club[];
+  form: FormGroup;
+  loading: boolean;
+  dateRange: any;
 
   constructor(private clubService: ClubService) {
     this.form = new FormGroup({
@@ -30,7 +30,7 @@ export class AnswersClubListComponent implements OnInit {
     this.initForm();
   }
 
-  private setDateRange() {
+  setDateRange() {
     if (this.form.valid) {
       localStorage.setItem('dateRange', JSON.stringify(this.form.value));
       this.dateRange = this.getDateRange();

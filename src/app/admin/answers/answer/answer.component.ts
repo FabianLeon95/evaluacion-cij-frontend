@@ -11,8 +11,8 @@ import {AnswerService} from '../../../services/answer.service';
 export class AnswerComponent implements OnInit {
   @Input() club: Club;
   @Input() question: Question;
-  private answers: any[];
-  private loading: boolean;
+  answers: any[];
+  loading: boolean;
 
   constructor(private answerService: AnswerService) {
     this.loading = true;

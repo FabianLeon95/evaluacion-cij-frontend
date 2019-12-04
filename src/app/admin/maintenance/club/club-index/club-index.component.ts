@@ -10,9 +10,9 @@ import {environment} from '../../../../../environments/environment';
   styles: []
 })
 export class ClubIndexComponent implements OnInit {
-  private clubs: Club[];
-  private loading: boolean;
-  private apiUrl: string;
+  clubs: Club[];
+  loading: boolean;
+  apiUrl: string;
 
   constructor(private clubService: ClubService) {
     this.loading = true;

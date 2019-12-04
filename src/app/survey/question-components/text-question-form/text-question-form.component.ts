@@ -16,12 +16,13 @@ export class TextQuestionFormComponent implements OnDestroy {
   @Input() clubId: number;
   @Input() question: Question;
   @Output() onAnswerSend: EventEmitter<boolean>;
-  private isRecording;
-  private recordedTime;
-  private blob;
-  private blobUrl;
+  isRecording;
+  recordedTime;
+  blob;
+  blobUrl;
 
-  constructor(private audioRecorder: AudioRecorderService, private sanitizer: DomSanitizer, private answerService: AnswerService, private speechService: SpeechService) {
+  constructor(private audioRecorder: AudioRecorderService, private sanitizer: DomSanitizer, private answerService: AnswerService,
+              private speechService: SpeechService) {
     this.onAnswerSend = new EventEmitter<boolean>();
     this.form = new FormGroup({
       text: new FormControl('')

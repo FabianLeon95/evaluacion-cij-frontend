@@ -10,9 +10,9 @@ import {Question} from '../../../../models/question.model';
 export class AnswerTextComponent implements OnInit {
   @Input() answers: any[];
   @Input() question: Question;
-  private textAnswers: string[];
-  private audioAnswers: string[];
-  private apiUrl: string;
+  textAnswers: string[];
+  audioAnswers: string[];
+  apiUrl: string;
 
   constructor() {
     this.apiUrl = environment.apiUrl;

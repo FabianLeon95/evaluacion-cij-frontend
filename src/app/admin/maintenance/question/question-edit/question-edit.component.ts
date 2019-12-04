@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
   styles: []
 })
 export class QuestionEditComponent implements OnInit {
-  private form: FormGroup;
-  private question: Question;
+  form: FormGroup;
+  question: Question;
 
   constructor(private questionService: QuestionService, private route: ActivatedRoute) {
     this.form = new FormGroup({

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuestionService} from '../../../../services/question.service';
 import Swal from 'sweetalert2';
 
@@ -8,8 +8,9 @@ import Swal from 'sweetalert2';
   styles: []
 })
 export class QuestionIndexComponent implements OnInit {
-  private questions: any[];
-  private loading: boolean;
+  questions: any[];
+  loading: boolean;
+
   constructor(private questionService: QuestionService) {
     this.loading = true;
   }
