@@ -2,13 +2,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AdminModule} from './admin/admin.module';
 import {SurveyModule} from './survey/survey.module';
 import {JwtModule} from '@auth0/angular-jwt';
 
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
+import {TokenInterceptor} from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,18 @@ import {environment} from '../environments/environment';
     JwtModule.forRoot({
       config: {
         tokenGetter: jwtGetter,
-        whitelistedDomains: new Array(new RegExp('^null$')),
+        whitelistedDomains: [environment.apiDomain, environment.apiUrl],
         blacklistedRoutes: []
       }
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })
@@ -36,4 +43,6 @@ import {environment} from '../environments/environment';
 export class AppModule {
 }
 
-export function jwtGetter(): string { return localStorage.getItem('token'); }
+export function jwtGetter(): string {
+  return localStorage.getItem('token');
+}
