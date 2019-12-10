@@ -23,7 +23,7 @@ import {environment} from '../environments/environment';
     JwtModule.forRoot({
       config: {
         tokenGetter: jwtGetter,
-        whitelistedDomains: [environment.apiDomain, environment.apiUrl],
+        whitelistedDomains: [/^null$/],
         blacklistedRoutes: []
       }
     })
